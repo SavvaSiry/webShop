@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
@@ -20,7 +21,8 @@ public class ProductController {
 
     @GetMapping("/products")
     @JsonView(View.Product.class)
-    public List<Product> getPoints() {
+    public List<Product> getPoints(HttpServletResponse httpServletResponse) {
+        httpServletResponse.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
         return productService.getProducts();
     }
 

@@ -19,6 +19,10 @@ public class Image {
     @ManyToOne(fetch = FetchType.LAZY)
     private Product product;
 
+    @Column(name = "number", nullable = false)
+    @JsonView(View.Image.class)
+    private int number;
+
     @Column(name = "url", nullable = false)
     @JsonView(View.Image.class)
     private String url;
